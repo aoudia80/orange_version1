@@ -26,7 +26,7 @@ public class TestLogin extends Base {
         String actualUrl = driver.getCurrentUrl();
         //Assertion
         Assert.assertEquals(expectedUrl, actualUrl);
-//        Assert.assertTrue(false);
+
     }
 
     @Test
@@ -35,16 +35,11 @@ public class TestLogin extends Base {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.name("username")));
         homePage.doLogin("Admin", "");
 
-        homePage.clickOnLogin();
+
         homePage.isRequiredMSGDisplay();
 ////        // assertion
         Assert.assertTrue(homePage.isRequiredMSGDisplay());
     }
 
-    @AfterMethod
-    public void cleanUp() {
-        driver.close();
-        driver.quit();
-    }
 
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -30,13 +31,16 @@ public class Base {
         wait = new WebDriverWait(driver,30);
 
     }
-
-//    //selenium api or common Api
     public void clickOnElement(WebElement element){
         element.click();
     }
     public void enterText(WebElement element, String text) {
         element.sendKeys(text);
+    }
+    @AfterMethod
+    public void cleanUp() {
+        driver.close();
+        driver.quit();
     }
 
 }
