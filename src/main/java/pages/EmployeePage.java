@@ -26,10 +26,12 @@ public class EmployeePage extends Base {
     WebElement clickSave;
     @FindBy(xpath = "//span[text()='Required']")
     WebElement requiredMSG;
-    @FindBy(xpath = "//label[text()='Employee Name']")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[1]/div/div[2]/div/div/input")
     WebElement inputEmployeeName;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement clickSearch;
+    @FindBy(xpath = "//span[text()='No Records Found']")
+    WebElement NoRecordsFoundMSG;
 
     public void setClickPIM() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='PIM']")));
@@ -67,12 +69,17 @@ public class EmployeePage extends Base {
     }
 
     public void enterEmployeeName(String employeeName) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Employee Name']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[5]/div/div[2]/div/div/input")));
         enterText(inputEmployeeName, employeeName);
     }
 
     public void clickSearchButton() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@type='submit']")));
         clickOnElement(clickSearch);
+    }
+
+    public boolean isNoRecordsFoundMSGDisplayed() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='No Records Found']")));
+        return NoRecordsFoundMSG.isDisplayed();
     }
 }
