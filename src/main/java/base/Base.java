@@ -31,16 +31,33 @@ public class Base {
         wait = new WebDriverWait(driver,30);
 
     }
+    @AfterMethod
+    public void cleanUp() {
+        driver.close();
+        driver.quit();
+    }
+
+    // do more methods
+    // guide other team member how to use framework
+    // help nassiba
+    // add scrennshot
+    // add appache poi to get data from exel docs
+    // properties file
+    //java faker use it
+    // extends report
+    // retry analyzer
     public void clickOnElement(WebElement element){
         element.click();
     }
     public void enterText(WebElement element, String text) {
         element.sendKeys(text);
     }
-    @AfterMethod
-    public void cleanUp() {
-        driver.close();
-        driver.quit();
-    }
+
+
+
+
+
+
+
 
 }
