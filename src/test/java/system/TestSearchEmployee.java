@@ -6,6 +6,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.Test;
 import pages.EmployeePage;
 import pages.HomePage;
@@ -26,10 +27,6 @@ public class TestSearchEmployee extends Base {
 
         employeePage.clickSearchButton();
         Assert.assertEquals(employeeName, "Amelia Brown");
-        TakesScreenshot takeScreenshot= (TakesScreenshot) driver;
-        File source=takeScreenshot.getScreenshotAs(OutputType.FILE);
-        String path=System.getProperty("user.dir")+File.separator+"screen_shot"+File.separator+"validSearchEmployee.png";
-        FileUtils.copyFile(source, new File(path));
 
     }
 
@@ -46,12 +43,8 @@ public class TestSearchEmployee extends Base {
         employeePage.clickSearchButton();
         //Assertion
         Assert.assertTrue(employeePage.isNoRecordsFoundMSGDisplayed());
-        TakesScreenshot takeScreenshot= (TakesScreenshot) driver;
-        File source=takeScreenshot.getScreenshotAs(OutputType.FILE);
-        String path=System.getProperty("user.dir")+File.separator+"screen_shot"+File.separator+"invalidSearchEmployee.png";
-        FileUtils.copyFile(source, new File(path));
-
 
     }
+
 }
 
